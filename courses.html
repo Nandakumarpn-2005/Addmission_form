@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses - Bengaluru North University</title>
+  <style>
+    body {
+      font-family: "Poppins", "Segoe UI", Tahoma, sans-serif;
+      background: #f6f8fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Heading Animation */
+    h2 {
+      text-align: center;
+      color: #1f3c88;
+      margin: 40px 0 10px;
+      font-size: 2rem;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeDown 1s ease forwards;
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Grid Layout */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    /* Card Styling */
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    /* Animate each card with delay */
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
+    .card:nth-child(4) { animation-delay: 0.8s; }
+    .card:nth-child(5) { animation-delay: 1s; }
+    .card:nth-child(6) { animation-delay: 1.2s; }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card h3 {
+      color: #1f3c88;
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Button Styling */
+    .btn {
+      display: block;
+      margin: 40px auto 60px;
+      background: #1f3c88;
+      color: #fff;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #162a5a;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    @media(max-width:480px) {
+      .courses-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Our Courses</h2>
+  <div class="courses-grid">
+    <div class="card"><h3>Bachelor of Arts (BA)</h3><p>Specializations in History, Economics, Political Science, and more.</p></div>
+    <div class="card"><h3>Bachelor of Science (BSc)</h3><p>Physics, Chemistry, Mathematics, Computer Science, and more.</p></div>
+    <div class="card"><h3>Bachelor of Commerce (BCom)</h3><p>Accounting, Finance, Business Studies with industry exposure.</p></div>
+    <div class="card"><h3>Bachelor of Business Administration (BBA)</h3><p>Management, Marketing, HR, and Entrepreneurship skills.</p></div>
+    <div class="card"><h3>Bachelor of Computer Applications (BCA)</h3><p>Focuses on programming, web technologies, and software development.</p></div>
+    <div class="card"><h3>Master of Commerce (MCom)</h3><p>Advanced commerce studies in finance, accounting, and research methods.</p></div>
+  </div>
+  <button class="btn" onclick="location.href='index.html'">⬅ Back to Home</button>
+</body>
+</html>

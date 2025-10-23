@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admission Form - The National Degree College, Bagepalli</title>
+  <style>
+    body {
+      font-family: "Poppins", "Segoe UI", Tahoma, sans-serif;
+      background-color: #f6f8fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1f3c88;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-logo {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 60px;
+      width: 60px;
+      object-fit: contain;
+    }
+
+    .header-logo.left {
+      left: 20px;
+    }
+
+    .header-logo.right {
+      right: 20px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin: 0;
+    }
+
+    header h2 {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 50px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    h3 {
+      color: #1f3c88;
+      margin-top: 30px;
+      border-bottom: 2px solid #1f3c88;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      margin-top: 5px;
+      background: #fafafa;
+      transition: 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #1f3c88;
+      background: #fff;
+      outline: none;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .row .col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .declaration {
+      background: #f0f3ff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      border-left: 4px solid #1f3c88;
+    }
+
+    .signature {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: block;
+      background: #1f3c88;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      margin: 40px auto 0;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #162a5a;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 20px;
+      }
+      .signature {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2 style="text-align:center; color:#1f3c88;">Application for Admission</h2>
+    <form>
+      <h3>Student Details</h3>
+      <div class="row">
+        <div class="col">
+          <label for="name">Name of the Student</label>
+          <input type="text" id="name" placeholder="Enter full name">
+        </div>
+        <div class="col">
+          <label for="photo">Upload pasport Photo</label>
+          <input type="file" id="photo" accept="image/*">
+        </div>
+      </div>
+
+      <label for="father">Father's Name & Occupation</label>
+      <input type="text" id="father">
+
+      <label for="mother">Mother's Name & Occupation</label>
+      <input type="text" id="mother">
+
+      <label for="address">Permanent Address</label>
+      <textarea id="address" placeholder="Enter postal address"></textarea>
+
+      <h3>Bank Details</h3>
+      <div class="row">
+        <div class="col">
+          <label for="bankname">Bank Name</label>
+          <input type="text" id="bankname" placeholder="Bank Name">
+        </div>
+        <div class="col">
+          <label for="ifsc">IFSC Code</label>
+          <input type="text" id="ifsc" placeholder="IFSC code">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="accno">Account Number</label>
+          <input type="text" id="accno" placeholder="Account no.">
+        </div>
+        <div class="col">
+          <label for="branch">Branch</label>
+          <input type="text" id="branch" placeholder="address of bank">
+        </div>
+      </div>
+
+      <h3>Contact & Other Details</h3>
+      <div class="row">
+        <div class="col">
+          <label for="mobile1">Mobile Number 1</label>
+          <input type="text" id="mobile1" placeholder="Student Number">
+        </div>
+        <div class="col">
+          <label for="mobile2">Mobile Number 2</label>
+          <input type="text" id="mobile2" placeholder="Parents/Guardian signature Number">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label for="religion">Religion</label>
+          <input type="text" id="religion">
+        </div>
+        <div class="col">
+          <label for="caste">Caste</label>
+          <input type="text" id="caste" >
+        </div>
+        <div class="col">
+          <label for="category">Category</label>
+          <input type="text" id="category" >
+        </div>
+      </div>
+
+      <h3>Academic Details</h3>
+      <div class="row">
+        <div class="col">
+          <label for="sslc">SSLC Register No.</label>
+          <input type="text" id="sslc" >
+        </div>
+        <div class="col">
+          <label for="prevReg">Previous Exam Register No.</label>
+          <input type="text" id="prevReg" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <label for="aadhaar">Aadhaar No.</label>
+          <input type="text" id="aadhaar" >
+        </div>
+        <div class="col">
+          <label for="email">Email ID</label>
+          <input type="email" id="email" >
+        </div>
+      </div>
+      
+      <label for="course">Admission Sought for</label>
+      <select id="course">
+        <option value="" disabled selected>Select Semester and Course</option>
+        <option value="V_BCA">V Semester - B.C.A.</option>
+        <option value="V_BA">V Semester - B.A.</option>
+        <option value="V_BSC">V Semester - B.Sc.</option>
+        <option value="V_BCOM">V Semester - B.Com.</option>
+        <option value="III_BCA">III Semester - B.C.A.</option>
+        <option value="III_BA">III Semester - B.A.</option>
+        <option value="III_BSC">III Semester - B.Sc.</option>
+        <option value="III_BCOM">III Semester - B.Com.</option>
+      </select>
+
+
+      <h3>Undertaking</h3>
+      <div class="declaration">
+        <p>I, <strong><span id="studentNameDisplay">DADAPEER</span></strong>, student of III/V year BA/B.Sc/B.Com/BCA/BBA hereby undertake that:</p>
+        <ul>
+          <li>I will attend the classes regularly (*75% attendance is compulsory*).</li>
+          <li>In case of regular absence, my admission may be cancelled.</li>
+          <li>I strictly adhere to the rules of the college regarding *uniform, mobile phones*, and discipline.</li>
+          <li>I will not indulge in *ragging, eve-teasing*, etc.</li>
+          <li>I will be liable for a *fine of ₹500* if found using a *mobile phone in the classroom*.</li>
+        </ul>
+      </div>
+
+      <div class="signature">
+         <div class="col">
+          <label for="photo">student signature</label>
+          <input type="file" id="photo" accept="image/*">
+        </div>
+        <div class="col">
+          <label for="photo">Parents/Guardian signature</label>
+          <input type="file" id="photo" accept="image/*">
+        </div>
+      </div>
+
+      <button type="button" class="btn">Submit Application</button>
+    </form>
+  </main>
+</body>
+</html>

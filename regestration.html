@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply - Bengaluru North University</title>
+  <style>
+    body { font-family:"Poppins","Segoe UI",Tahoma,sans-serif; background:#f6f8fa; color:#222; margin:0; padding:0; }
+    h2,h3 { text-align:center; color:#1f3c88; margin:20px 0; }
+    form { max-width:700px; margin:50px auto; background:#fff; padding:40px; border-radius:12px; box-shadow:0 4px 25px rgba(0,0,0,0.1); }
+    label { display:block; font-weight:600; margin-bottom:8px; color:#333; }
+    input, select { width:100%; padding:12px; border-radius:6px; border:1px solid #ccc; margin-bottom:20px; font-size:1rem; background:#fafafa; transition:0.2s; }
+    input:focus, select:focus { border-color:#1f3c88; outline:none; background:#fff; }
+    input[type="checkbox"] { width:auto; margin-right:10px; }
+    .btn { display:block; margin:20px auto; background:#1f3c88; color:#fff; padding:14px 32px; border:none; border-radius:6px; font-size:1.05rem; cursor:pointer; transition:0.3s; }
+    .btn:hover { background:#162a5a; }
+    .back-btn { background:#555; }
+    .back-btn:hover { background:#333; }
+    @media(max-width:480px){ form{padding:20px;} .btn{width:100%;} }
+  </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+  <form method="post" action="regestration.py">
+    <label for="name">Full Name *</label>
+    <input id="name" name="full_name" type="text" required>
+
+    <label for="Regester">Register No. *</label>
+    <input id="Regester" name="Regester" type="text" required>
+
+    <label for="course">Select Course *</label>
+    <select id="course" name="course_id" required>
+      <option value="">-- choose --</option>
+      <option value="1">B.Sc Computer Science</option>
+      <option value="2">B.Com</option>
+      <option value="3">BCA</option>
+      <option value="4">BBA</option>
+      <option value="5">MCom</option>
+    </select>
+
+    <label for="Semester">Semester *</label>
+    <select id="Semester" name="Semester" required>
+      <option value="">-- choose --</option>
+      <option value="1">1st</option>
+      <option value="2">2nd</option>
+      <option value="3">3rd</option>
+      <option value="4">4th</option>
+      <option value="5">5th</option>
+      <option value="6">6th</option>
+    </select>
+
+    <label for="phone">Phone *</label>
+    <input id="phone" name="phone" type="text" required>
+
+    <h3>Pay Application Fee ₹100</h3>
+    <button type="button" class="btn" onclick="startPayment()">Pay Now</button>
+    <input type="hidden" name="transaction_id" id="transaction_id">
+
+    <label for="photo">Upload Fees Receipt Image *</label>
+    <input id="photo" name="photo" type="file" accept="image/*" required>
+
+    <label><input type="checkbox" required> I declare that the information provided is true *</label>
+
+    <button type="submit" class="btn">Submit Application</button>
+  <script>
+    function startPayment(){
+      let upiId="6362834815@ybl";
+      let name="The National College";
+      let amount="100";
+      let url=`upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+      window.location.href=url;
+      setTimeout(()=>{
+        let txn=prompt("Enter Transaction ID after payment:");
+        if(txn) document.getElementById("transaction_id").value=txn;
+      },3000);
+    }
+  </script>
+</body>
+</html>
