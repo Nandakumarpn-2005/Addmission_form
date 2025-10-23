@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<h2>Registration Successful!</h2>";
         echo "<p><strong>Transaction ID:</strong> $txn_id</p>";
         echo "<p><strong>Your Password:</strong> $password</p>";
-        echo "<a href='verify.html'>Go to Verification</a>";
+        echo "<a href='app.html'>Go to Verification</a>";
     } else {
         echo "Error: " . pg_last_error($conn);
     }
