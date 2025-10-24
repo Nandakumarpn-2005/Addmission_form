@@ -14,14 +14,16 @@
     input[type="checkbox"] { width:auto; margin-right:10px; }
     .btn { display:block; margin:20px auto; background:#1f3c88; color:#fff; padding:14px 32px; border:none; border-radius:6px; font-size:1.05rem; cursor:pointer; transition:0.3s; }
     .btn:hover { background:#162a5a; }
-    .back-btn { background:#555; }
-    .back-btn:hover { background:#333; }
+    .payment-options { text-align:center; margin:10px 0; }
+    .payment-options button { margin:6px; background:#4b6cb7; border:none; color:#fff; padding:10px 20px; border-radius:6px; cursor:pointer; }
+    .payment-options button:hover { background:#1f3c88; }
     @media(max-width:480px){ form{padding:20px;} .btn{width:100%;} }
   </style>
 </head>
 <body>
   <h2>Registration Form</h2>
-  <form method="post" action="regestration.py">
+
+  <form method="POST" action="regestration.php" enctype="multipart/form-data" id="registrationForm">
     <label for="name">Full Name *</label>
     <input id="name" name="full_name" type="text" required>
 
@@ -50,10 +52,16 @@
     </select>
 
     <label for="phone">Phone *</label>
-    <input id="phone" name="phone" type="text" required>
+    <input id="phone" name="phone" type="text" required pattern="[0-9]{10}" title="Enter 10-digit phone number">
 
     <h3>Pay Application Fee ₹100</h3>
-    <button type="button" class="btn" onclick="startPayment()">Pay Now</button>
+    <div class="payment-options">
+      <button type="button" onclick="pay('gpay')">Google Pay</button>
+      <button type="button" onclick="pay('phonepe')">PhonePe</button>
+      <button type="button" onclick="pay('paytm')">Paytm</button>
+      <button type="button" onclick="pay('upi')">Other UPI URL</button>
+    </div>
+
     <input type="hidden" name="transaction_id" id="transaction_id">
 
     <label for="photo">Upload Fees Receipt Image *</label>
@@ -61,19 +69,49 @@
 
     <label><input type="checkbox" required> I declare that the information provided is true *</label>
 
-    <button type="submit" class="btn" onclick="location.href='app.html'">Submit Application</button>
+    <button type="submit" class="btn">Submit Application</button>
+  </form>
+
   <script>
-    function startPayment(){
-      let upiId="6362834815@ybl";
-      let name="The National College";
-      let amount="100";
-      let url=`upi://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-      window.location.href=url;
-      setTimeout(()=>{
-        let txn=prompt("Enter Transaction ID after payment:");
-        if(txn) document.getElementById("transaction_id").value=txn;
-      },3000);
+    function pay(method) {
+      const upiId = "6362834815@ybl";
+      const name = "The National College";
+      const amount = "100";
+      let url = "";
+
+      if (method === "gpay")
+        url = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+      else if (method === "phonepe")
+        url = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+      else if (method === "paytm")
+        url = `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+      else if (method === "upi") {
+        const customUrl = prompt("Enter your custom UPI URL (e.g., upi://pay?pa=...):");
+        if (customUrl) window.location.href = customUrl;
+        return;
+      }
+
+      if (url) {
+        window.location.href = url;
+      } else {
+        alert("Invalid payment method!");
+      }
     }
+
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      const txnInput = document.getElementById("transaction_id");
+
+      // Ask for transaction ID only when user clicks submit
+      if (!txnInput.value) {
+        const txn = prompt("Enter Transaction ID from your payment:");
+        if (txn && txn.trim() !== "") {
+          txnInput.value = txn.trim();
+        } else {
+          e.preventDefault();
+          alert("Transaction ID is required to submit your application!");
+        }
+      }
+    });
   </script>
 </body>
 </html>
