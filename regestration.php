@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // PostgreSQL connection
-$conn = pg_connect("host=localhost dbname=student_addmission user=roots password=Nandakumarpn@!");
+$conn = pg_connect("host=localhost dbname=student_addmission user=nandakumarpn password=Nandakumarpn@!");
 if (!$conn) {
     die("❌ Database connection failed: " . pg_last_error());
 }
